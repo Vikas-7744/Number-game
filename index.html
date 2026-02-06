@@ -4,13 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>guess the number</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .box {
+            width: 400px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 20px;
+            border: 3px solid rgb(252, 7, 7);
+            animation: borderColor 2s infinite linear;
+            box-shadow: 0 0 10px rgba(159, 32, 32, 0.2);
+            
+        }
+         @keyframes borderColor {
+        0%   { border-color: red; }
+        25%  { border-color: rgb(104, 205, 88); }
+        50%  { border-color: rgb(66, 220, 205); }
+        75%  { border-color: rgb(94, 68, 130); }
+        100% { border-color: rgb(137, 49, 109); }
+    }
+
+        .checkguess:hover{
+            transform: scale(1.1);
+        }
+        .reset:hover{
+            transform: scale(1.1);
+        }
+
+        input, button {
+            margin: 5px;
+            padding: 5px;
+        }
+    </style>
 </head>
+
 <body style="font-family :arial;text-align:center;margin-top:40;">
+
+    <div class="box">
+        
     <h2>guess the number till 1 to 20</h2>
+    <div class="input-group mb-3">
     <input type="number" id="guess" placeholder="enter number">
-    <button onclick="checkguess()">check </button>    
-    <button onclick="resetgame()">reset</button>
+    <button onclick="checkguess()" class="checkguess">check </button>    
+    <button onclick="resetgame()" class="reset">reset</button>
     <p id="msg"></p>
+    </div></div>
     <script>
         let secret=Math.floor(Math.random()*20)+1
         let attempts=0;
@@ -22,7 +66,7 @@
 
             if(userguess===secret)
         {
-            document.getElementById("msg").innerHTML="correct! you have guessed in"+attempts+"attempts";
+            document.getElementById("msg").innerHTML="correct! you have guessed in " + attempts + " attempts";
         }
         else if(userguess<secret)
         {
